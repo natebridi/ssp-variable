@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Source Sans Pro Variable</title>
+	<style>
+		@font-face {
+			font-family: ssp;
+			src: url('fonts/SourceSansVariable-Roman.ttf');
+		}
+
+		body {
+			font-family: ssp;
+			font-variation-settings: 'wght' 400;
+			padding: 0;
+			margin: 0;
+			font-size: 18px;
+			line-height: 1.4;
+		}
+
+		p {
+			margin: 0 0 1em;
+		}
+
+		.bigger {
+			font-size: 1.5em;
+			line-height: 1.2;
+		}
+
+		.biggest {
+			font-size: 3em;
+			line-height: 1.1;
+		}
+
+		.wrap {
+			display: grid;
+			grid-template-columns: 50fr 50fr;
+		}
+
+		.controls {
+			grid-column: span 2;
+			display: flex;
+		}
+
+		.controls label {
+			flex: 1 0 auto;
+			padding: 1em;
+		}
+
+		label input {
+			display: block;
+			width: 100%;
+		}
+
+		.light,
+		.dark {
+			padding: 1.5em 2em;
+		}
+
+
+		.light {
+			background-color: #f9f9f9;
+			color: #333;
+		}
+
+		.dark {
+			background-color: #53a63a;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="controls">
+			<label>
+				Light Weight
+				<input type="range" min="200" max="900" id="weightLight" value="400" />
+			</label>
+			<label>
+				Dark Weight
+				<input type="range" min="200" max="900" id="weightDark" value="400" />
+			</label>
+		</div>
+		<div class="light">
+			<p class="biggest">Lorem ipsum dolor sit amet, consectetur adipisicing elit<p>
+			<p class="bigger">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
+		</div>
+		<div class="dark">
+			<p class="biggest">Lorem ipsum dolor sit amet, consectetur adipisicing elit<p>
+			<p class="bigger">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#weightLight').on('input', function() {
+				$('.light').attr('style', buildVariation(this));
+			});
+			$('#weightDark').on('input', function() {
+				$('.dark').attr('style', buildVariation(this));
+			});
+		});
+
+		function buildVariation(elem) {
+			return "font-variation-settings: 'wght' " + $(elem).val();
+		}
+	</script>
+</body>
+</html>
